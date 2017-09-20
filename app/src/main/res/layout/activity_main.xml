@@ -1,35 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:autofit="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.huchuan.calculator.MainActivity">
+    tools:context="com.example.huchuan.calculator.SimpleCalculatorActivity">
 
-    <TextView
-        android:id="@+id/textView"
+    <me.grantland.widget.AutofitTextView
+        android:id="@+id/input"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-
-        android:layout_weight="3"
-        android:background="@drawable/button_selector_light"
-        android:elevation="0dp"
-        android:fontFamily="sans-serif-light"
-        android:text="New Text"
-        android:textColor="@color/blue"
-        android:textSize="60sp" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-
         android:layout_weight="2"
         android:background="@drawable/button_selector_light"
         android:clickable="true"
         android:elevation="3dp"
         android:fontFamily="sans-serif-light"
-        android:text="New Text"
+        android:gravity="right|center_vertical"
+        android:maxLines="2"
+        android:text="123"
+        android:textColor="@color/blue"
+        android:textSize="65sp"
+        autofit:minTextSize="40sp" />
+    <!--<TextView-->
+        <!--android:id="@+id/input"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="2"-->
+        <!--android:background="@drawable/button_selector_light"-->
+        <!--android:clickable="true"-->
+        <!--android:elevation="3dp"-->
+        <!--android:fontFamily="sans-serif-light"-->
+        <!--android:gravity="right|center_vertical"-->
+        <!--android:text=""-->
+        <!--android:textColor="@color/blue"-->
+        <!--android:textSize="65sp" />-->
+
+    <TextView
+        android:id="@+id/output"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/button_selector_light"
+        android:clickable="true"
+        android:elevation="3dp"
+        android:fontFamily="sans-serif-light"
+        android:gravity="right"
+        android:text="123"
         android:textColor="@color/blue"
         android:textSize="40sp" />
 
@@ -37,7 +54,7 @@
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="7"
+        android:layout_weight="6"
         android:background="@color/padding"
         android:columnCount="4"
         android:elevation="0dp"
@@ -58,7 +75,7 @@
             android:textSize="40sp" />
 
         <Button
-            android:id="@+id/plusminus"
+            android:id="@+id/leftBracket"
             android:layout_columnSpan="1"
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
@@ -67,12 +84,13 @@
             android:layout_rowWeight="1"
             android:background="@drawable/button_selector_gray"
             android:fontFamily="sans-serif-light"
-            android:text="( )"
+            android:tag="（"
+            android:text="("
             android:textColor="@color/blue"
             android:textSize="40sp" />
 
         <Button
-            android:id="@+id/modulus"
+            android:id="@+id/rightBracket"
             android:layout_columnSpan="1"
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
@@ -81,12 +99,13 @@
             android:layout_rowWeight="1"
             android:background="@drawable/button_selector_gray"
             android:fontFamily="sans-serif-light"
-            android:text="%"
+            android:tag="）"
+            android:text=")"
             android:textColor="@color/blue"
             android:textSize="40sp" />
 
         <Button
-            android:id="@+id/devide"
+            android:id="@+id/divide"
             android:layout_columnSpan="1"
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
@@ -109,6 +128,7 @@
             android:background="@drawable/button_selector_light"
             android:fontFamily="sans-serif-thin"
             android:padding="0dp"
+            android:tag="7"
             android:text="7"
             android:textColor="@color/black"
             android:textSize="40sp" />
@@ -123,6 +143,7 @@
             android:layout_rowWeight="1"
             android:background="@drawable/button_selector_light"
             android:fontFamily="sans-serif-thin"
+            android:tag="8"
             android:text="8"
             android:textColor="@color/black"
             android:textSize="40sp" />
@@ -137,6 +158,7 @@
             android:layout_rowWeight="1"
             android:background="@drawable/button_selector_light"
             android:fontFamily="sans-serif-thin"
+            android:tag="9"
             android:text="9"
             android:textColor="@color/black"
             android:textSize="40sp" />
@@ -164,6 +186,7 @@
             android:layout_rowWeight="1"
             android:background="@drawable/button_selector_light"
             android:fontFamily="sans-serif-thin"
+            android:tag="4"
             android:text="4"
             android:textColor="@color/black"
             android:textSize="40sp" />
@@ -178,6 +201,7 @@
             android:layout_rowWeight="1"
             android:background="@drawable/button_selector_light"
             android:fontFamily="sans-serif-thin"
+            android:tag="5"
             android:text="5"
             android:textColor="@color/black"
             android:textSize="40sp" />
@@ -192,6 +216,7 @@
             android:layout_rowWeight="1"
             android:background="@drawable/button_selector_light"
             android:fontFamily="sans-serif-thin"
+            android:tag="6"
             android:text="6"
             android:textColor="@color/black"
             android:textSize="40sp" />
@@ -219,6 +244,7 @@
             android:layout_rowWeight="1"
             android:background="@drawable/button_selector_light"
             android:fontFamily="sans-serif-thin"
+            android:tag="1"
             android:text="1"
             android:textColor="@color/black"
             android:textSize="40sp" />
@@ -234,6 +260,7 @@
             android:layout_rowWeight="1"
             android:background="@drawable/button_selector_light"
             android:fontFamily="sans-serif-thin"
+            android:tag="2"
             android:text="2"
             android:textColor="@color/black"
             android:textSize="40sp" />
@@ -248,6 +275,7 @@
             android:layout_rowWeight="1"
             android:background="@drawable/button_selector_light"
             android:fontFamily="sans-serif-thin"
+            android:tag="3"
             android:text="3"
             android:textColor="@color/black"
             android:textSize="40sp" />
@@ -274,6 +302,7 @@
             android:layout_rowWeight="1"
             android:background="@drawable/button_selector_light"
             android:fontFamily="sans-serif-thin"
+            android:tag="0"
             android:text="0"
             android:textColor="@color/black"
             android:textSize="40sp" />
@@ -287,6 +316,7 @@
             android:layout_rowWeight="1"
             android:background="@drawable/button_selector_light"
             android:fontFamily="sans-serif-thin"
+            android:tag="."
             android:text="."
             android:textColor="@color/black"
             android:textSize="40sp" />

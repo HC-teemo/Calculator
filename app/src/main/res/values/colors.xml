@@ -13,6 +13,7 @@
     <color name="gray">#b6b1b1</color>
     <color name="gray2">#e9ecec</color>
     <color name="gray3">#eceeed</color>
-    <color name="padding">#d9d9da</color>
+    <!--<color name="padding">#d9d9da</color>-->
+    <color name="padding">#e7e7e9</color>
 
 </resources>
