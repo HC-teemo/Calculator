@@ -2,6 +2,7 @@ package com.example.huchuan.calculator;
 
 import java.util.ArrayList;
 import java.util.Stack;
+import java.math.BigDecimal;
 
 import static java.lang.Math.floor;
 
@@ -170,27 +171,29 @@ public class Calculator {
 	//计算表达式
 	public double calculateExpression(ArrayList<String> postfixExp) {
 		double result=0;
-		Stack<Double> stack=new Stack<Double>();
+		Stack<BigDecimal> stack=new Stack<BigDecimal>();
 		for (int i = 0; i <postfixExp.size(); i++) {
 			String j=postfixExp.get(i);
 			if(!(j.equals("+")||j.equals("-")||j.equals("*")||j.equals("/")||j.equals("(")||j.equals(")"))){
-				stack.push(Double.valueOf(j));
+				stack.push(new BigDecimal(j));
 			}else {
-				double number1,number2,re=0;
+				BigDecimal number1,number2,re;
+				re=new BigDecimal(0);
 				number2=stack.pop();
 				number1=stack.pop();
 				switch (j) {
 					case "+":
-						re=number1+number2;
+
+						re=number1.add(number2);
 						break;
 					case "-":
-						re=number1-number2;
+						re=number1.subtract(number2);
 						break;
 					case "*":
-						re=number1*number2;
+						re=number1.multiply(number2);
 						break;
 					case "/":
-						re=number1/number2;
+						re=number1.divide(number2);
 						break;
 					default:
 						break;
@@ -198,7 +201,7 @@ public class Calculator {
 				stack.push(re);
 			}
 		}
-		result=stack.peek();
+		result=Double.valueOf(stack.peek().toString());
 		return result;
 	}
 
