@@ -2,9 +2,13 @@ package com.example.huchuan.calculator;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
 
 public class SimpleCalculatorActivity extends Activity implements View.OnClickListener{
 
@@ -14,6 +18,9 @@ public class SimpleCalculatorActivity extends Activity implements View.OnClickLi
             btn_clean,btn_dot,btn_leftBracket,btn_rightBracket;
 
     TextView input,output;
+
+    String calculateResult="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +76,30 @@ public class SimpleCalculatorActivity extends Activity implements View.OnClickLi
                 return false;
             }
         });
+
+        input.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String changed=input.getText().toString();
+                if(!changed.equals("")){
+                    Log.i("change",changed);
+                    calculateResult=calculate(changed);
+                    if(!calculateResult.equals("表达式错误")){
+                        output.setText(calculateResult);
+                    }
+                }
+            }
+        });
         }
     //OnClickEvent
     @Override
@@ -79,26 +110,35 @@ public class SimpleCalculatorActivity extends Activity implements View.OnClickLi
             case R.id.clean:
                 delete();
                 break;
-            case R.id.leftBracket:
-                break;
-            case R.id.rightBracket:
-                break;
-            case R.id.divide:
-                break;
-            case R.id.multiply:
-                break;
-            case R.id.minus:
-                break;
-            case R.id.plus:
-                break;
+//            case R.id.leftBracket:
+//                break;
+//            case R.id.rightBracket:
+//                break;
+//            case R.id.divide:
+//                break;
+//            case R.id.multiply:
+//                break;
+//            case R.id.minus:
+//                break;
+//            case R.id.plus:
+//                break;
             case R.id.equal:
+                //output.setText(calculate(input.getText().toString()));
+//                String result=calculate(input.getText().toString());
+                if(calculateResult.equals("表达式错误")){
+                    output.setText(calculateResult);
+                }else {
+                    input.setText(calculateResult);
+                    output.setText("");
+                    calculateResult="";
+                }
                 break;
             default:
                 input(tag);
         }
     }
 
-    private void input(String content) {
+    private void input(String content){
         input.append(content);
     }
     private void delete(){
@@ -107,5 +147,13 @@ public class SimpleCalculatorActivity extends Activity implements View.OnClickLi
     }
     private void clean(){
         input.setText("");
+        output.setText("");
+    }
+    private String calculate(String input){
+        input=input.replace('×','*').replace('÷','/');
+        Calculator calculator=new Calculator();
+        String result;
+        result=calculator.calculate(input);
+        return result;
     }
 }
