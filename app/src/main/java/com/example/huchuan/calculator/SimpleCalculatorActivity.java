@@ -1,16 +1,25 @@
 package com.example.huchuan.calculator;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
-public class SimpleCalculatorActivity extends Activity implements View.OnClickListener{
+public class SimpleCalculatorActivity extends Activity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
 
     Button btn_0,btn_1,btn_2,btn_3,btn_4,
             btn_5,btn_6,btn_7,btn_8,btn_9,
@@ -48,6 +57,9 @@ public class SimpleCalculatorActivity extends Activity implements View.OnClickLi
         //TextViews
         input=(TextView)this.findViewById(R.id.input);
         output=(TextView)this.findViewById(R.id.output);
+        //NavigationView
+        NavigationView navigationView=(NavigationView)this.findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener(this);
         //setOnClick
         btn_0.setOnClickListener(this);
         btn_1.setOnClickListener(this);
@@ -155,5 +167,32 @@ public class SimpleCalculatorActivity extends Activity implements View.OnClickLi
         String result;
         result=calculator.calculate(input);
         return result;
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        Log.i("na","onNavigationItemSelected: "+id);
+        if (id == R.id.calculator) {
+
+        }else if(id == R.id.converter){
+            Toast.makeText(this,"converter",Toast.LENGTH_SHORT).show();
+            Intent intent=new Intent(SimpleCalculatorActivity.this,ConverterActivity.class);
+            startActivity(intent);
+        }
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return false;
     }
 }
