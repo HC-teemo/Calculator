@@ -99,7 +99,9 @@ public class Calculator {
 						e=stack.peek();
 						while (!stack.empty()&&!e.equals("(")) {
 							postfixExp.add(stack.pop());
-							e=stack.peek();
+							if(!stack.empty()){
+								e=stack.peek();
+							}
 						}
 					}
 					//该运算符入栈
@@ -115,7 +117,9 @@ public class Calculator {
 						e=stack.peek();
 						while (!stack.empty()&&!e.equals("(")) {
 							postfixExp.add(stack.pop());
-							e=stack.peek();
+							if(!stack.empty()){
+								e=stack.peek();
+							}
 						}
 					}
 					//该运算符入栈
@@ -213,12 +217,13 @@ public class Calculator {
 		if(!ExpressionCheck(infixExpression)){
 			return "表达式错误";
 		}
+		try {
 		System.out.println("after infixExpression"+infixExpression);
 		//转后缀
 		ArrayList<String> PostfixExpression=this.infixExpression2PostfixExpression(infixExpression);
 		System.out.println("PostfixExpression"+PostfixExpression);
 		//计算
-		try {
+
 			double result=this.calculateExpression(PostfixExpression);
 			System.out.println("result"+result);
 			//整数检测
@@ -235,7 +240,7 @@ public class Calculator {
 	}
 
 //	public static void main(String[] args) {
-//		String teString="-1.1+()+1-1";
+//		String teString="1+2-6*9+";
 //		Calculator calculator=new Calculator();
 //		System.out.println(calculator.calculate(teString));
 //	}

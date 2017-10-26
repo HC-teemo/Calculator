@@ -1,0 +1,345 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.huchuan.calculator.ConverterFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:background="@drawable/convertercolor"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/sys1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.45"
+
+                />
+
+
+            <TextView
+                android:id="@+id/num1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@null"
+                android:ems="10"
+                android:gravity="right"
+                android:text="0"
+                android:textColor="@color/blue"
+                android:textSize="50sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.2"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="9.8"
+                android:background="@color/blue" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/floatingActionButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                app:background="@color/blue2"
+                app:backgroundTint="@color/blue"
+                app:fabSize="mini"
+                app:srcCompat="@drawable/swicon" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/sys2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.45" />
+
+            <TextView
+                android:id="@+id/num2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@null"
+                android:ems="10"
+                android:gravity="right"
+                android:text="0"
+                android:textColor="@color/blue"
+                android:textSize="50sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:background="@color/white"
+        android:columnCount="4"
+        android:elevation="0dp"
+        android:rowCount="4">
+
+        <Button
+            android:id="@+id/a3"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
+            android:background="@drawable/button_selector_light"
+            android:fontFamily="sans-serif-smallcaps"
+            android:tag="A"
+            android:text="a"
+            android:textColor="@color/blue"
+            android:textSize="40sp" />
+
+        <Button
+            android:id="@+id/b3"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
+            android:background="@drawable/button_selector_light"
+            android:fontFamily="sans-serif-smallcaps"
+            android:tag="B"
+            android:text="b"
+            android:textColor="@color/blue"
+            android:textSize="40sp" />
+
+        <Button
+            android:id="@+id/c3"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
+            android:background="@drawable/button_selector_light"
+            android:fontFamily="sans-serif-smallcaps"
+            android:tag="B"
+            android:text="c"
+            android:textColor="@color/blue"
+            android:textSize="40sp" />
+
+        <Button
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
+            android:background="@drawable/button_selector_light"
+            android:fontFamily="sans-serif-smallcaps"
+            android:tag=" "
+            android:text=" "
+            android:textColor="@color/blue"
+            android:textSize="40sp" />
+
+        <Button
+            android:id="@+id/seven3"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
+            android:background="@drawable/button_selector_light"
+            android:fontFamily="sans-serif-smallcaps"
+            android:padding="0dp"
+            android:tag="7"
+            android:text="7"
+            android:textColor="@color/blue"
+            android:textSize="40sp" />
+
+        <Button
+            android:id="@+id/eight3"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
+            android:background="@drawable/button_selector_light"
+            android:fontFamily="sans-serif-smallcaps"
+            android:tag="8"
+            android:text="8"
+            android:textColor="@color/blue"
+            android:textSize="40sp" />
+
+        <Button
+            android:id="@+id/nine3"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
+            android:background="@drawable/button_selector_light"
+            android:fontFamily="sans-serif-smallcaps"
+            android:tag="9"
+            android:text="9"
+            android:textColor="@color/blue"
+            android:textSize="40sp" />
+
+        <Button
+            android:id="@+id/d3"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
+            android:background="@drawable/button_selector_light"
+            android:fontFamily="sans-serif-smallcaps"
+            android:tag="D"
+            android:text="d"
+            android:textColor="@color/blue"
+            android:textSize="40sp" />
+
+        <Button
+            android:id="@+id/four3"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
+            android:background="@drawable/button_selector_light"
+            android:fontFamily="sans-serif-smallcaps"
+            android:tag="4"
+            android:text="4"
+            android:textColor="@color/blue"
+            android:textSize="40sp" />
+
+        <Button
+            android:id="@+id/five3"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
+            android:background="@drawable/button_selector_light"
+            android:fontFamily="sans-serif-smallcaps"
+            android:tag="5"
+            android:text="5"
+            android:textColor="@color/blue"
+            android:textSize="40sp" />
+
+        <Button
+            android:id="@+id/six3"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
+            android:background="@drawable/button_selector_light"
+            android:fontFamily="sans-serif-smallcaps"
+            android:tag="6"
+            android:text="6"
+            android:textColor="@color/blue"
+            android:textSize="40sp" />
+
+
+        <Button
+            android:id="@+id/e3"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
+            android:background="@drawable/button_selector_light"
+            android:fontFamily="sans-serif-smallcaps"
+            android:tag="E"
+            android:text="e"
+            android:textColor="@color/blue"
+            android:textSize="40sp" />
+
+        <Button
+            android:id="@+id/one3"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
+            android:background="@drawable/button_selector_light"
+            android:fontFamily="sans-serif-smallcaps"
+            android:tag="1"
+            android:text="1"
+            android:textColor="@color/blue"
+            android:textSize="40sp" />
+
+        <Button
+            android:id="@+id/two3"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
+            android:background="@drawable/button_selector_light"
+            android:fontFamily="sans-serif-smallcaps"
+            android:tag="2"
+            android:text="2"
+            android:textColor="@color/blue"
+            android:textSize="40sp" />
+
+        <Button
+            android:id="@+id/three3"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
+            android:background="@drawable/button_selector_light"
+            android:fontFamily="sans-serif-smallcaps"
+            android:tag="3"
+            android:text="3"
+            android:textColor="@color/blue"
+            android:textSize="40sp" />
+
+
+        <Button
+            android:id="@+id/f3"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
+            android:background="@drawable/button_selector_light"
+            android:fontFamily="sans-serif-smallcaps"
+            android:tag="F"
+            android:text="f"
+            android:textColor="@color/blue"
+            android:textSize="40sp" />
+
+        <Button
+            android:id="@+id/zero3"
+            android:layout_columnSpan="2"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
+            android:background="@drawable/button_selector_light"
+            android:fontFamily="sans-serif-smallcaps"
+            android:tag="0"
+            android:text="0"
+            android:textColor="@color/blue"
+            android:textSize="40sp" />
+
+        <Button
+            android:id="@+id/clean3"
+            android:layout_columnSpan="2"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
+            android:background="@drawable/button_selector_light"
+            android:text="C"
+            android:textColor="@color/blue"
+            android:textSize="40sp" />
+
+    </GridLayout>
+
+</LinearLayout>

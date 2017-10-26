@@ -1,6 +1,8 @@
 package com.example.huchuan.calculator;
 
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -19,156 +21,32 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class SimpleCalculatorActivity extends Activity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
+public class SimpleCalculatorActivity extends Activity implements NavigationView.OnNavigationItemSelectedListener {
+    private NavigationView navigationView;
+    //fragments TODO
+    private CalculatorFragment calculatorFragment;
+    private ConverterFragment converterFragment;
+    private SystemFragment systemFragment;
 
-    Button btn_0,btn_1,btn_2,btn_3,btn_4,
-            btn_5,btn_6,btn_7,btn_8,btn_9,
-            btn_plus,btn_minus,btn_multiply,btn_divide,btn_equal,
-            btn_clean,btn_dot,btn_leftBracket,btn_rightBracket;
-
-    TextView input,output;
-
-    String calculateResult="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Buttons
-        btn_0=(Button) this.findViewById(R.id.zero);
-        btn_1=(Button) this.findViewById(R.id.one);
-        btn_2=(Button) this.findViewById(R.id.two);
-        btn_3=(Button) this.findViewById(R.id.three);
-        btn_4=(Button) this.findViewById(R.id.four);
-        btn_5=(Button) this.findViewById(R.id.five);
-        btn_6=(Button) this.findViewById(R.id.six);
-        btn_7=(Button) this.findViewById(R.id.seven);
-        btn_8=(Button) this.findViewById(R.id.eight);
-        btn_9=(Button) this.findViewById(R.id.nine);
-        btn_plus=(Button) this.findViewById(R.id.plus);
-        btn_minus=(Button) this.findViewById(R.id.minus);
-        btn_multiply=(Button) this.findViewById(R.id.multiply);
-        btn_divide=(Button) this.findViewById(R.id.divide);
-        btn_equal=(Button) this.findViewById(R.id.equal);
-        btn_clean=(Button) this.findViewById(R.id.clean);
-        btn_dot=(Button) this.findViewById(R.id.dot);
-        btn_leftBracket=(Button) this.findViewById(R.id.leftBracket);
-        btn_rightBracket=(Button) this.findViewById(R.id.rightBracket);
-        //TextViews
-        input=(TextView)this.findViewById(R.id.input);
-        output=(TextView)this.findViewById(R.id.output);
-        //NavigationView
-        NavigationView navigationView=(NavigationView)this.findViewById(R.id.navigation_view);
+        //初始化控件和声明事件
+        navigationView=this.findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
-        //setOnClick
-        btn_0.setOnClickListener(this);
-        btn_1.setOnClickListener(this);
-        btn_2.setOnClickListener(this);
-        btn_3.setOnClickListener(this);
-        btn_4.setOnClickListener(this);
-        btn_5.setOnClickListener(this);
-        btn_6.setOnClickListener(this);
-        btn_7.setOnClickListener(this);
-        btn_8.setOnClickListener(this);
-        btn_9.setOnClickListener(this);
-        btn_equal.setOnClickListener(this);
-        btn_minus.setOnClickListener(this);
-        btn_multiply.setOnClickListener(this);
-        btn_divide.setOnClickListener(this);
-        btn_dot.setOnClickListener(this);
-        btn_plus.setOnClickListener(this);
-        btn_clean.setOnClickListener(this);
-        btn_leftBracket.setOnClickListener(this);
-        btn_rightBracket.setOnClickListener(this);
-
-        btn_clean.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                clean();
-                return false;
-            }
-        });
-
-        input.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                String changed=input.getText().toString();
-                if(!changed.equals("")){
-                    Log.i("change",changed);
-                    calculateResult=calculate(changed);
-                    if(!calculateResult.equals("表达式错误")){
-                        output.setText(calculateResult);
-                    }
-                }
-            }
-        });
-        }
-    //OnClickEvent
-    @Override
-    public void onClick(View v) {
-        int id=v.getId();
-        String tag=(String)v.getTag();
-        switch (id){
-            case R.id.clean:
-                delete();
-                break;
-//            case R.id.leftBracket:
-//                break;
-//            case R.id.rightBracket:
-//                break;
-//            case R.id.divide:
-//                break;
-//            case R.id.multiply:
-//                break;
-//            case R.id.minus:
-//                break;
-//            case R.id.plus:
-//                break;
-            case R.id.equal:
-                //output.setText(calculate(input.getText().toString()));
-//                String result=calculate(input.getText().toString());
-                if(calculateResult.equals("表达式错误")){
-                    output.setText(calculateResult);
-                }else {
-                    input.setText(calculateResult);
-                    output.setText("");
-                    calculateResult="";
-                }
-                break;
-            default:
-                input(tag);
-        }
+        // 设置默认的Fragment
+        setDefaultFragment();
     }
 
-    private void input(String content){
-        input.append(content);
+    private void setDefaultFragment() {
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        calculatorFragment = new CalculatorFragment();
+        transaction.replace(R.id.id_content,calculatorFragment);
+        transaction.commit();
     }
-    private void delete(){
-        if(input.getText().length()>0)
-        input.setText(input.getText().subSequence(0,input.getText().length()-1));
-    }
-    private void clean(){
-        input.setText("");
-        output.setText("");
-    }
-    private String calculate(String input){
-        input=input.replace('×','*').replace('÷','/');
-        Calculator calculator=new Calculator();
-        String result;
-        result=calculator.calculate(input);
-        return result;
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -183,14 +61,37 @@ public class SimpleCalculatorActivity extends Activity implements View.OnClickLi
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        Log.i("na","onNavigationItemSelected: "+id);
-        if (id == R.id.calculator) {
-
-        }else if(id == R.id.converter){
-            Toast.makeText(this,"converter",Toast.LENGTH_SHORT).show();
-            Intent intent=new Intent(SimpleCalculatorActivity.this,ConverterActivity.class);
-            startActivity(intent);
+        FragmentManager fm = getFragmentManager();
+        // 开启Fragment事务
+        FragmentTransaction transaction = fm.beginTransaction();
+        switch (id)
+        {
+            case R.id.calculator:
+                if (calculatorFragment == null)
+                {
+                    calculatorFragment = new CalculatorFragment();
+                }
+                // 使用当前Fragment的布局替代id_content的控件
+                transaction.replace(R.id.id_content, calculatorFragment);
+                break;
+            case R.id.converter:
+                if (converterFragment == null)
+                {
+                    converterFragment = new ConverterFragment();
+                }
+                transaction.replace(R.id.id_content, converterFragment);
+                break;
+            case R.id.system:
+                if (systemFragment == null)
+                {
+                    systemFragment = new SystemFragment();
+                }
+                transaction.replace(R.id.id_content, systemFragment);
+                break;
         }
+        // transaction.addToBackStack();
+        // 事务提交
+        transaction.commit();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return false;

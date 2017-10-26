@@ -3,7 +3,8 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     buildToolsVersion '25.0.0'
-
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
     defaultConfig {
         applicationId "com.example.huchuan.calculator"
         minSdkVersion 22
@@ -22,11 +23,12 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 //    compile 'com.android.support:appcompat-v7:23.1.1'
+    //    compile 'com.android.support:design:23.1.1'
+    //    compile 'com.android.support:support-v4:26.+'
     compile 'me.grantland:autofittextview:0.2.+'
-//    compile 'com.android.support:design:23.1.1'
     compile 'com.android.support:appcompat-v7:26.+'
-//    compile 'com.android.support:support-v4:26.+'
     compile 'com.android.support:design:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:support-v4:26.+'
     testCompile 'junit:junit:4.12'
 }
