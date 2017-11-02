@@ -58,7 +58,66 @@
         android:background="@color/padding"
         android:columnCount="4"
         android:elevation="0dp"
-        android:rowCount="5">
+        android:rowCount="6">
+
+
+        <Button
+            android:id="@+id/drg"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_marginBottom="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_rowWeight="1"
+            android:background="@drawable/button_selector_gray"
+            android:fontFamily="sans-serif-light"
+            android:text="deg"
+            android:textColor="@color/blue"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/sin"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_marginBottom="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_rowWeight="1"
+            android:background="@drawable/button_selector_gray"
+            android:fontFamily="sans-serif-light"
+            android:tag="sin"
+            android:text="sin"
+            android:textColor="@color/blue"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/cos"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_marginBottom="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_rowWeight="1"
+            android:background="@drawable/button_selector_gray"
+            android:fontFamily="sans-serif-light"
+            android:tag="cos"
+            android:text="cos"
+            android:textColor="@color/blue"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/tan"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_marginBottom="1dp"
+            android:layout_rowWeight="1"
+            android:background="@drawable/button_selector_gray"
+            android:fontFamily="sans-serif-light"
+            android:tag="tan"
+            android:text="tan"
+            android:textColor="@color/blue"
+            android:textSize="30sp" />
 
         <Button
             android:id="@+id/clean"

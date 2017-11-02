@@ -22,11 +22,14 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
     Button btn_0,btn_1,btn_2,btn_3,btn_4,
             btn_5,btn_6,btn_7,btn_8,btn_9,
             btn_plus,btn_minus,btn_multiply,btn_divide,btn_equal,
-            btn_clean,btn_dot,btn_leftBracket,btn_rightBracket;
+            btn_clean,btn_dot,btn_leftBracket,btn_rightBracket,
+            btn_drg,btn_sin,btn_cos,btn_tan;
 
     TextView input,output;
 
     String calculateResult="";
+    //控制DRG按键，true为角度，false为弧度
+    public boolean drg_flag = true;
 
     public CalculatorFragment() {
         // Required empty public constructor
@@ -57,6 +60,10 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
         btn_dot=(Button) view.findViewById(R.id.dot);
         btn_leftBracket=(Button) view.findViewById(R.id.leftBracket);
         btn_rightBracket=(Button) view.findViewById(R.id.rightBracket);
+        btn_drg=(Button) view.findViewById(R.id.drg);
+        btn_sin=(Button) view.findViewById(R.id.sin);
+        btn_cos=(Button) view.findViewById(R.id.cos);
+        btn_tan=(Button) view.findViewById(R.id.tan);
         //TextViews
         input=(TextView)view.findViewById(R.id.input);
         output=(TextView)view.findViewById(R.id.output);
@@ -80,7 +87,10 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
         btn_clean.setOnClickListener(this);
         btn_leftBracket.setOnClickListener(this);
         btn_rightBracket.setOnClickListener(this);
-
+        btn_drg.setOnClickListener(this);
+        btn_sin.setOnClickListener(this);
+        btn_cos.setOnClickListener(this);
+        btn_tan.setOnClickListener(this);
         btn_clean.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -134,6 +144,13 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
 //                break;
 //            case R.id.plus:
 //                break;
+            case R.id.drg:
+                drg_flag=!drg_flag;
+                if(drg_flag){
+                    btn_drg.setText("DEG");
+                }else {
+                    btn_drg.setText("RAD");
+                }
             case R.id.equal:
                 //output.setText(calculate(input.getText().toString()));
 //                String result=calculate(input.getText().toString());
@@ -162,10 +179,11 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
         output.setText("");
     }
     private String calculate(String input){
-        input=input.replace('×','*').replace('÷','/');
-        Calculator calculator=new Calculator();
+//        input=input.replace('×','*').replace('÷','/');
+//        Calculator calculator=new Calculator();
+        Calculatorv2 calculatorv2=new Calculatorv2();
         String result;
-        result=calculator.calculate(input);
+        result=calculatorv2.process(input,drg_flag);
         return result;
     }
 
